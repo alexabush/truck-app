@@ -40,7 +40,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar isShow={this.state.isShow} />
+        <NavBar togglePage={this.togglePage} isShow={this.state.isShow} />
         <h1>Truck App</h1>
         <Route
           path="/"
