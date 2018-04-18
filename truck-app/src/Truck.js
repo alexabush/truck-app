@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class Truck extends Component {
   render() {
     return (
-      <div>
-        <p>{this.name}</p>
-        <img src={this.img} alt="" />
+      <div className="Truck">
+        <p>{this.props.name}</p>
+        <img src={this.props.img} alt="" />
       </div>
     );
   }

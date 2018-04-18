@@ -3,7 +3,8 @@ import Truck from './Truck';
 
 class TruckList extends Component {
   render() {
-    const trucks = this.props.truck.map(({ name, img }, index) => {
+    ;
+    const trucks = this.props.trucks.map(({ name, img }, index) => {
       return <Truck key={index} name={name} img={img} />;
     });
     return <div>{trucks}</div>;
