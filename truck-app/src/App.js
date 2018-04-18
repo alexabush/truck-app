@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
 import './App.css';
 import TruckList from './TruckList';
+import NavBar from './NavBar';
 import NewTruckForm from './NewTruckForm';
 
 class App extends Component {
@@ -14,9 +16,11 @@ class App extends Component {
       //     return { ...this.props.Trucks[index] };
       //   }
       // )
-      trucks: props.Trucks.map(t => ({ ...t }))
+      trucks: props.Trucks.map(t => ({ ...t })),
+      isShow: true
     };
     this.addTruck = this.addTruck.bind(this);
+    this.togglePage = this.togglePage.bind(this);
   }
 
   addTruck(newTruck) {
@@ -26,11 +30,29 @@ class App extends Component {
     });
   }
 
+  togglePage() {
+    this.setState(prevState => {
+      let newState = { ...prevState };
+      return { isShow: !newState.isShow };
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <NewTruckForm addTruck={this.addTruck} />
-        <TruckList key={0} trucks={this.state.trucks} />
+        <NavBar isShow={this.state.isShow} />
+        <h1>Truck App</h1>
+        <Route
+          path="/"
+          exact
+          component={() => <TruckList key={0} trucks={this.state.trucks} />}
+        />
+        <Route
+          path="/new"
+          component={() => {
+            return <NewTruckForm addTruck={this.addTruck} />;
+          }}
+        />
       </div>
     );
   }
