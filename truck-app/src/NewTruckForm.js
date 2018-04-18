@@ -5,14 +5,17 @@ class NewTruckForm extends Component {
     super(props);
     this.state = {
       name: '',
-      src: ''
+      img: ''
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    //debugger;
     this.props.addTruck({ ...this.state });
-    this.setState({ name: '', src: '' });
+    this.setState({ name: '', img: '' });
     e.target.reset();
   }
 
@@ -32,12 +35,12 @@ class NewTruckForm extends Component {
           onChange={this.handleChange}
           value={this.state.name}
         />
-        <label htmlFor="src">Image Url: </label>
+        <label htmlFor="img">Image Url: </label>
         <input
-          id="src"
-          name="src"
+          id="img"
+          name="img"
           onChange={this.handleChange}
-          value={this.state.src}
+          value={this.state.img}
         />
         <input type="submit" />
       </form>

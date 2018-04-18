@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import TruckList from './TruckList';
-// import NewTruckForm from './NewTruckForm';
+import NewTruckForm from './NewTruckForm';
 
 class App extends Component {
   constructor(props) {
@@ -20,6 +20,7 @@ class App extends Component {
   }
 
   addTruck(newTruck) {
+    //debugger;
     this.setState(prevState => {
       return { trucks: [...prevState.trucks, newTruck] };
     });
@@ -28,7 +29,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <NewTruckForm addTruck={this.addTruck} /> */}
+        <NewTruckForm addTruck={this.addTruck} />
         <TruckList key={0} trucks={this.state.trucks} />
       </div>
     );
